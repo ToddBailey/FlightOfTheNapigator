@@ -1,0 +1,71 @@
+Wiring For Flying Bed Relay Boards
+Atmega 168p (28-pin DIP package)
+
+Todd Bailey
+Thu Mar 13 20:02:32 EDT 2014
+
+Port		Pin		Function
+-------		----		--------			
+
+PORTB,0		14		IR Receiver Input (ICP1 pin)
+PORTB,1		15		
+PORTB,2		16		
+PORTB,3		17		ISP MOSI
+PORTB,4		18		ISP MISO	
+PORTB,5		19		ISP SCK
+PORTB,6		9		
+PORTB,7		10		
+
+PORTC,0		23		
+PORTC,1		24		
+PORTC,2		25		
+PORTC,3		26		Relay Drive 0	(this connects BLACK to RED in the switch box)
+PORTC,4		27		Relay Drive 1	(this connects BROWN to RED in the switch box)
+PORTC,5		28		Relay Drive 2	(this connects BLACK to GREEN in the switch box)
+PORTC,6		1 (Reset)	ISP Reset 	(pulled up via 10k)
+
+PORTD,0		2		
+PORTD,1		3		
+PORTD,2		4		
+PORTD,3		5		
+PORTD,4		6		
+PORTD,5		11		
+PORTD,6		12		(PWM pin to IR LED Drive, OC0A)	
+PORTD,7		13		
+
+AREF		21		Unused			
+
+
+Pin Overview (looking at the top of the chip):
+----------------------------------------------
+
+			 ---------------
+	        Reset ---  *		--- Relay Drive 2	(BLACK to GREEN)
+			|		|
+	   	      ---		--- Relay Drive 1	(BROWN to RED)
+			|		|
+	      	      ---		--- Relay Drive 0	(BLACK to RED)
+			|		|	
+		      ---		--- 
+			|		|
+		      ---		--- 
+			|		|
+		      ---		--- 	
+			|		|
+	         VCC  ---		--- Gnd		
+			|		|		
+		 Gnd  ---		--- Aref (VCC)	
+			|		|
+		      ---		--- AVcc (VCC)
+			|		|
+		      ---		--- SCK (ISP)
+			|		|	
+		      ---		--- MISO (ISP)
+			|		|
+       (IR LED in Tx) ---		--- MOSI (ISP)
+			|		|
+		      ---		---	
+			|		|
+	IR Rx input   ---		---	
+			 ---------------
+			

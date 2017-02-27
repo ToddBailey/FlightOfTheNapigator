@@ -1,0 +1,11 @@
+bool HaveNewIrByte(void);
+unsigned char GetIrByte(void);
+bool GotIrRxError(void);
+ISR(TIMER1_CAPT_vect);
+ISR(TIMER1_COMPA_vect);
+void IrRxFrame(unsigned char length,unsigned char *frameData);
+bool IrCheckRxFrame(unsigned char *length);
+bool IrTxComplete(void);
+void IrTxFrame(unsigned char length,const unsigned char *frameBytes);
+void UnInitIr(void);
+void InitIr(void);
